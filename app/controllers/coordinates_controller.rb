@@ -28,8 +28,11 @@ class CoordinatesController < ApplicationController
     location_serialized = URI.open(url).read
     museums = JSON.parse(location_serialized)["features"]
     @postcodes = museums.map { |museum| museum["context"][1]["text"] }
-    @names = museums.map { |museum| museum["text"] }
-    count = (0..5).to_a
+    @names = museums.map do |museum|
+      museum_name_array = []
+      museum_name_array << museum["text"]
+    end
+    count = (0..4).to_a
     @museum_results = {}
     count.each do |num|
       @museum_results[@postcodes[num]] = @names[num]
