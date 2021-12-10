@@ -1,4 +1,9 @@
-<h1>Museums around latitude <%= @latitude %> and longitude <%= @longitude %> </h1>
+<div class = "container results">
+  <h3>JSON of museums around latitude <%= @latitude %> and longitude <%= @longitude %> </h3>
 
+  <%= @museum_results.to_json %>
 
-<%= @museum_results.to_json %>
+  <br>
+  <br>
+  <%= link_to "Search again", root_path %>
+</div>
